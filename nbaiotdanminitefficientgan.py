@@ -43,7 +43,7 @@ def get_optimizer():
 
 #generator functional model definition
     
-def gen_model(optimizer, n):
+def gen_model(n):
     
     inputs = Input((n,))
     l1 = Dense(input_dim = n , units = 64, kernel_initializer=initializers.glorot_uniform())(inputs)
@@ -64,7 +64,7 @@ def gen_model(optimizer, n):
 
 #define the discriminator functional model
     
-def dis_model(optimizer, n):
+def dis_model(n):
     inputs = Input((n,))
     l1 = Dense(input_dim = n, units = 64, kernel_initializer=initializers.glorot_uniform())(inputs)
     l1 = LeakyReLU(0.1)(l1)
