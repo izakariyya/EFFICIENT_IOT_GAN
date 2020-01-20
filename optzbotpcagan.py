@@ -56,7 +56,7 @@ def get_optimizer():
 
 #generator functional model definition
     
-def gen_model(optimizer, n):
+def gen_model(n):
     
     inputs = Input((n,))
     l1 = Dense(input_dim = n , units = 64, kernel_initializer=initializers.glorot_uniform())(inputs)
@@ -76,7 +76,7 @@ def gen_model(optimizer, n):
     return gmodel
 #define the discriminator functional model
     
-def dis_model(optimizer, n):
+def dis_model(n):
     inputs = Input((n,))
     l1 = Dense(input_dim = n, units = 64, kernel_initializer=initializers.glorot_uniform())(inputs)
     l1 = LeakyReLU(0.1)(l1)
@@ -100,7 +100,7 @@ def dis_model(optimizer, n):
     #print(dmodel.summary)
     return dmodel
 
-def define_gan(discriminator, generator, optimizer, n):
+def define_gan(discriminator, generator, n):
     discriminator.trainable = False
     gan_input = Input(shape=(n,))
     # the output of the generator (
